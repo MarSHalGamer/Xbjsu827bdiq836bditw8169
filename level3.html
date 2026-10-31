@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المرحلة الثالثة</title>
+    <title>💀 المرحلة الثالثة</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="blood-drip"></div>
+    
     <div class="container">
-        <h1>🔺 المرحلة الثالثة</h1>
+        <h1>🔺 المرحلة الأخيرة 🔺</h1>
         
-        <p class="message">اختر الترتيب الصحيح للرموز</p>
+        <p class="message">اختر الترتيب الصحيح... قبل فوات الأوان</p>
         
         <div class="timer" id="timer">02:00</div>
         
@@ -20,14 +22,14 @@
             <div class="symbol-box" data-symbol="square" onclick="selectSymbol(this)">🟦</div>
         </div>
         
-        <p class="message">الترتيب المختار: <span id="selected">-</span></p>
+        <p class="message">الترتيب المختار: <span id="selected" style="color: #ff0000;">-</span></p>
         
-        <button onclick="checkSymbols()">تحقق</button>
+        <button onclick="checkSymbols()">🩸 تحقق 🩸</button>
         
-        <div class="error" id="error">❌ الترتيب خاطئ</div>
+        <div class="error" id="error">❌ الترتيب خاطئ... الظلام يبتلعك ❌</div>
         
         <div class="hint" id="hint">
-            💡 فكر بشكل له اربعه اضلاع وشكلين لهم ثلاثه اضلاع
+            💀 فكر بشكل له اربعه اضلاع وشكلين لهم ثلاثه اضلاع 💀
         </div>
     </div>
 
@@ -78,7 +80,6 @@
                 document.getElementById('error').classList.add('show');
                 setTimeout(() => {
                     document.getElementById('error').classList.remove('show');
-                    // إعادة تعيين الاختيار
                     selectedSymbols = [];
                     document.querySelectorAll('.symbol-box').forEach(box => {
                         box.classList.remove('selected');
