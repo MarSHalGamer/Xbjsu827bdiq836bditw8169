@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المرحلة الأولى</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 المرحلة الأولى</h1>
+        
+        <p class="message">أدخل كلمة السر للمتابعة</p>
+        
+        <div class="timer" id="timer">02:00</div>
+        
+        <input type="text" id="password" placeholder="اكتب كلمة السر هنا">
+        
+        <button onclick="checkPassword()">تحقق</button>
+        
+        <div class="error" id="error">❌ كلمة السر خاطئة</div>
+        
+        <div class="hint" id="hint">
+            💡 ارجع لصورة الباركود ستجد ك. .و .د
+        </div>
+    </div>
+
+    <div class="flash-text" id="flash">ج ب ك</div>
+
+    <script>
+        let timeLeft = 120;
+        let timerInterval;
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                document.getElementById('timer').textContent = 
+                    `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    document.getElementById('hint').classList.add('show');
+                }
+            }, 1000);
+        }
+
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            
+            if (password === '9g7h98') {
+                clearInterval(timerInterval);
+                
+                // إظهار الأحرف المتقطعة بسرعة
+                const flash = document.getElementById('flash');
+                flash.classList.add('show');
+                
+                setTimeout(() => {
+                    flash.classList.remove('show');
+                    window.location.href = 'level2.html';
+                }, 1000);
+            } else {
+                document.getElementById('error').classList.add('show');
+                setTimeout(() => {
+                    document.getElementById('error').classList.remove('show');
+                }, 2000);
+            }
+        }
+
+        startTimer();
+    </script>
+</body>
+</html>
