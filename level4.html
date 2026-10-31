@@ -3,28 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎉 تم حل اللغز!</title>
+    <title>💀 تم حل اللغز 💀</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="blood-drip"></div>
+    
     <div class="container">
-        <h1>🎉 تم حل اللغز!</h1>
+        <h1>🎉 نجوت... هذه المرة 🎉</h1>
         
-        <p class="message">مبروك! لقد أكملت جميع المراحل بنجاح</p>
+        <p class="message">لقد أكملت الرحلة... لكن الظلام لا ينتهي أبداً</p>
         
         <div class="final-code" id="finalCode">
             🗝️ X7K9M2P4Q8R3
         </div>
         
-        <button class="copy-btn" onclick="copyCode()">📋 نسخ الرمز</button>
+        <button class="copy-btn" onclick="copyCode()">📋 انسخ الرمز 📋</button>
         
         <p class="message" style="margin-top: 30px;">
             أرسل هذا الرمز للشخص الذي أرسل لك الباركود<br>
-            وانتظر اللغز الثاني
+            وانتظر... اللغز الثاني 👻
         </p>
         
-        <div style="margin-top: 40px; padding: 20px; background: #0a0a0a; border-radius: 10px;">
-            <p style="color: #0f0; font-size: 18px;">🏆 أنت الآن جزء من اللعبة</p>
+        <div style="margin-top: 40px; padding: 20px; background: #000; border: 2px solid #8b0000;">
+            <p style="color: #ff0000; font-size: 20px; text-shadow: 0 0 10px #ff0000;">
+                💀 أنت الآن جزء من الظلام 💀
+            </p>
         </div>
     </div>
 
@@ -34,7 +38,6 @@
             navigator.clipboard.writeText(code).then(() => {
                 alert('✅ تم نسخ الرمز!');
             }).catch(() => {
-                // للمتصفحات القديمة
                 const textArea = document.createElement('textarea');
                 textArea.value = code;
                 document.body.appendChild(textArea);
