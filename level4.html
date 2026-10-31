@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 تم حل اللغز!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 تم حل اللغز!</h1>
+        
+        <p class="message">مبروك! لقد أكملت جميع المراحل بنجاح</p>
+        
+        <div class="final-code" id="finalCode">
+            🗝️ X7K9M2P4Q8R3
+        </div>
+        
+        <button class="copy-btn" onclick="copyCode()">📋 نسخ الرمز</button>
+        
+        <p class="message" style="margin-top: 30px;">
+            أرسل هذا الرمز للشخص الذي أرسل لك الباركود<br>
+            وانتظر اللغز الثاني
+        </p>
+        
+        <div style="margin-top: 40px; padding: 20px; background: #0a0a0a; border-radius: 10px;">
+            <p style="color: #0f0; font-size: 18px;">🏆 أنت الآن جزء من اللعبة</p>
+        </div>
+    </div>
+
+    <script>
+        function copyCode() {
+            const code = document.getElementById('finalCode').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                alert('✅ تم نسخ الرمز!');
+            }).catch(() => {
+                // للمتصفحات القديمة
+                const textArea = document.createElement('textarea');
+                textArea.value = code;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                alert('✅ تم نسخ الرمز!');
+            });
+        }
+    </script>
+</body>
+</html>
