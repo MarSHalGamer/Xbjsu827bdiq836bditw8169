@@ -3,25 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المرحلة الأولى</title>
+    <title>💀 المرحلة الأولى</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="blood-drip"></div>
+    
     <div class="container">
-        <h1>🔐 المرحلة الأولى</h1>
+        <h1>💀 المرحلة الأولى 💀</h1>
         
-        <p class="message">أدخل كلمة السر للمتابعة</p>
+        <p class="message">أدخل كلمة السر... إن كنت تجرؤ</p>
         
         <div class="timer" id="timer">02:00</div>
         
         <input type="text" id="password" placeholder="اكتب كلمة السر هنا">
         
-        <button onclick="checkPassword()">تحقق</button>
+        <button onclick="checkPassword()">🩸 تحقق 🩸</button>
         
-        <div class="error" id="error">❌ كلمة السر خاطئة</div>
+        <div class="error" id="error">❌ كلمة السر خاطئة... الموت ينتظرك ❌</div>
         
         <div class="hint" id="hint">
-            💡 ارجع لصورة الباركود ستجد ك. .و .د
+            💀 ارجع لصورة الباركود ستجد ك. .و .د ، {ج ، ب ، ك} 💀
         </div>
     </div>
 
@@ -52,7 +54,6 @@
             if (password === '9g7h98') {
                 clearInterval(timerInterval);
                 
-                // إظهار الأحرف المتقطعة بسرعة
                 const flash = document.getElementById('flash');
                 flash.classList.add('show');
                 
