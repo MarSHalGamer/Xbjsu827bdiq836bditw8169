@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المرحلة الثانية</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🔤 المرحلة الثانية</h1>
+        
+        <p class="message">اكتب الأحرف المتقطعة</p>
+        
+        <div class="timer" id="timer">02:00</div>
+        
+        <input type="text" id="letters" placeholder="اكتب الأحرف هنا">
+        
+        <button onclick="checkLetters()">تحقق</button>
+        
+        <div class="error" id="error">❌ الأحرف خاطئة</div>
+        
+        <div class="hint" id="hint">
+            💡 اتوقع انك شفت احرف متقطعه قبل قليل
+        </div>
+    </div>
+
+    <script>
+        let timeLeft = 120;
+        let timerInterval;
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                document.getElementById('timer').textContent = 
+                    `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    document.getElementById('hint').classList.add('show');
+                }
+            }, 1000);
+        }
+
+        function checkLetters() {
+            const letters = document.getElementById('letters').value.replace(/\s/g, '');
+            
+            if (letters === 'جبك') {
+                clearInterval(timerInterval);
+                window.location.href = 'level3.html';
+            } else {
+                document.getElementById('error').classList.add('show');
+                setTimeout(() => {
+                    document.getElementById('error').classList.remove('show');
+                }, 2000);
+            }
+        }
+
+        startTimer();
+    </script>
+</body>
+</html>
