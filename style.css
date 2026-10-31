@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Eater&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,86 +7,246 @@
 }
 
 body {
-    background: #0a0a0a;
-    color: #fff;
-    font-family: 'Arial', sans-serif;
+    background: #000;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
+        url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /%3E%3C/filter%3E%3Crect width="100" height="100" filter="url(%23noise)" opacity="0.1"/%3E%3C/svg%3E');
+    color: #8b0000;
+    font-family: 'Creepster', cursive;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.15),
+            rgba(0, 0, 0, 0.15) 1px,
+            transparent 1px,
+            transparent 2px
+        );
+    pointer-events: none;
+    z-index: 1;
+    animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+    0% { opacity: 0.27861; }
+    5% { opacity: 0.34769; }
+    10% { opacity: 0.23604; }
+    15% { opacity: 0.90626; }
+    20% { opacity: 0.18128; }
+    25% { opacity: 0.83891; }
+    30% { opacity: 0.65583; }
+    35% { opacity: 0.67807; }
+    40% { opacity: 0.26559; }
+    45% { opacity: 0.84693; }
+    50% { opacity: 0.96019; }
+    55% { opacity: 0.08594; }
+    60% { opacity: 0.20313; }
+    65% { opacity: 0.71988; }
+    70% { opacity: 0.53455; }
+    75% { opacity: 0.37288; }
+    80% { opacity: 0.71428; }
+    85% { opacity: 0.70419; }
+    90% { opacity: 0.7003; }
+    95% { opacity: 0.36108; }
+    100% { opacity: 0.24387; }
 }
 
 .container {
-    background: #1a1a1a;
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 0 30px rgba(0, 255, 0, 0.2);
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 100%);
+    padding: 50px;
+    border-radius: 0;
+    box-shadow: 
+        0 0 50px rgba(139, 0, 0, 0.5),
+        inset 0 0 100px rgba(0, 0, 0, 0.8),
+        0 0 100px rgba(139, 0, 0, 0.3);
     max-width: 600px;
     width: 100%;
     text-align: center;
+    position: relative;
+    border: 3px solid #8b0000;
+    animation: containerPulse 3s infinite;
+    z-index: 2;
+}
+
+@keyframes containerPulse {
+    0%, 100% { 
+        box-shadow: 
+            0 0 50px rgba(139, 0, 0, 0.5),
+            inset 0 0 100px rgba(0, 0, 0, 0.8);
+    }
+    50% { 
+        box-shadow: 
+            0 0 80px rgba(139, 0, 0, 0.8),
+            inset 0 0 100px rgba(0, 0, 0, 0.8);
+    }
+}
+
+.container::before {
+    content: '💀';
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 60px;
+    animation: skullFloat 2s infinite;
+}
+
+@keyframes skullFloat {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-10px); }
 }
 
 h1 {
-    font-size: 32px;
+    font-family: 'Nosifer', cursive;
+    font-size: 42px;
     margin-bottom: 30px;
-    color: #0f0;
-    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    color: #8b0000;
+    text-shadow: 
+        0 0 10px #8b0000,
+        0 0 20px #8b0000,
+        0 0 30px #ff0000,
+        0 0 40px #ff0000,
+        2px 2px 4px #000;
+    animation: textGlitch 5s infinite;
+    letter-spacing: 3px;
+}
+
+@keyframes textGlitch {
+    0%, 100% { transform: translate(0); }
+    10% { transform: translate(-2px, 2px); }
+    20% { transform: translate(2px, -2px); }
+    30% { transform: translate(-2px, -2px); }
+    40% { transform: translate(2px, 2px); }
+    50% { transform: translate(0); }
 }
 
 .timer {
-    font-size: 48px;
-    color: #ff4444;
+    font-family: 'Eater', cursive;
+    font-size: 58px;
+    color: #ff0000;
     margin: 20px 0;
     font-weight: bold;
-    text-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+    text-shadow: 
+        0 0 10px #ff0000,
+        0 0 20px #ff0000,
+        0 0 30px #8b0000;
+    animation: timerPulse 1s infinite;
+}
+
+@keyframes timerPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
 }
 
 input[type="text"] {
     width: 100%;
-    padding: 15px;
-    font-size: 20px;
-    background: #0a0a0a;
-    border: 2px solid #0f0;
-    border-radius: 8px;
-    color: #fff;
+    padding: 18px;
+    font-size: 22px;
+    font-family: 'Creepster', cursive;
+    background: #000;
+    border: 2px solid #8b0000;
+    border-radius: 0;
+    color: #ff0000;
     text-align: center;
     margin: 20px 0;
+    box-shadow: 
+        inset 0 0 20px rgba(139, 0, 0, 0.3),
+        0 0 10px rgba(139, 0, 0, 0.5);
+    transition: all 0.3s;
 }
 
 input[type="text"]:focus {
     outline: none;
-    border-color: #00ff00;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+    border-color: #ff0000;
+    box-shadow: 
+        inset 0 0 30px rgba(255, 0, 0, 0.3),
+        0 0 20px rgba(255, 0, 0, 0.8);
+    animation: inputShake 0.5s;
+}
+
+@keyframes inputShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
 }
 
 button {
-    padding: 15px 40px;
-    font-size: 18px;
-    background: #0f0;
-    color: #000;
-    border: none;
-    border-radius: 8px;
+    padding: 18px 50px;
+    font-size: 20px;
+    font-family: 'Creepster', cursive;
+    background: linear-gradient(135deg, #8b0000 0%, #4a0000 100%);
+    color: #fff;
+    border: 2px solid #ff0000;
+    border-radius: 0;
     cursor: pointer;
     font-weight: bold;
     transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 
+        0 0 20px rgba(139, 0, 0, 0.5),
+        inset 0 0 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+button:hover::before {
+    left: 100%;
 }
 
 button:hover {
-    background: #00cc00;
+    background: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
     transform: scale(1.05);
+    box-shadow: 
+        0 0 30px rgba(255, 0, 0, 0.8),
+        inset 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .hint {
-    color: #333;
-    font-size: 14px;
+    color: #8b0000;
+    font-size: 16px;
     margin-top: 30px;
     opacity: 0;
     transition: opacity 1s;
+    font-family: 'Creepster', cursive;
+    text-shadow: 0 0 5px #8b0000;
 }
 
 .hint.show {
-    opacity: 0.4;
+    opacity: 0.65;
+    animation: hintPulse 2s infinite;
+}
+
+@keyframes hintPulse {
+    0%, 100% { opacity: 0.65; }
+    50% { opacity: 0.8; }
 }
 
 .flash-text {
@@ -92,12 +254,23 @@ button:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 80px;
-    color: #0f0;
+    font-size: 100px;
+    font-family: 'Nosifer', cursive;
+    color: #ff0000;
     font-weight: bold;
-    text-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+    text-shadow: 
+        0 0 20px #ff0000,
+        0 0 40px #8b0000,
+        0 0 60px #8b0000;
     z-index: 1000;
     display: none;
+    animation: flashShake 0.5s;
+}
+
+@keyframes flashShake {
+    0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+    25% { transform: translate(-50%, -50%) rotate(-5deg); }
+    75% { transform: translate(-50%, -50%) rotate(5deg); }
 }
 
 .flash-text.show {
@@ -107,74 +280,164 @@ button:hover {
 
 @keyframes flash {
     0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.5); }
     100% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
 }
 
 .symbols-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    gap: 20px;
     margin: 30px 0;
 }
 
 .symbol-box {
-    background: #0a0a0a;
-    border: 2px solid #0f0;
-    border-radius: 10px;
-    padding: 30px;
+    background: #000;
+    border: 3px solid #8b0000;
+    padding: 40px;
     cursor: pointer;
     transition: all 0.3s;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 40px;
+    font-size: 50px;
+    position: relative;
+    box-shadow: 
+        inset 0 0 20px rgba(139, 0, 0, 0.3),
+        0 0 10px rgba(139, 0, 0, 0.5);
 }
 
 .symbol-box:hover {
-    background: #1a1a1a;
-    border-color: #00ff00;
-    transform: scale(1.05);
+    background: #1a0000;
+    border-color: #ff0000;
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 
+        0 0 30px rgba(255, 0, 0, 0.8),
+        inset 0 0 30px rgba(139, 0, 0, 0.5);
 }
 
 .symbol-box.selected {
-    background: #0f0;
-    color: #000;
+    background: #8b0000;
+    border-color: #ff0000;
+    box-shadow: 
+        0 0 40px rgba(255, 0, 0, 1),
+        inset 0 0 30px rgba(0, 0, 0, 0.5);
+    animation: selectedPulse 1s infinite;
+}
+
+@keyframes selectedPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
 }
 
 .final-code {
-    background: #0a0a0a;
-    border: 2px solid #0f0;
-    border-radius: 10px;
-    padding: 20px;
+    background: #000;
+    border: 3px solid #8b0000;
+    padding: 25px;
     margin: 20px 0;
-    font-size: 24px;
-    font-family: monospace;
+    font-size: 28px;
+    font-family: 'Eater', cursive;
     word-break: break-all;
-    color: #0f0;
+    color: #ff0000;
+    text-shadow: 0 0 10px #ff0000;
+    box-shadow: 
+        inset 0 0 30px rgba(139, 0, 0, 0.3),
+        0 0 20px rgba(139, 0, 0, 0.5);
+    animation: codeGlow 2s infinite;
+}
+
+@keyframes codeGlow {
+    0%, 100% { 
+        box-shadow: 
+            inset 0 0 30px rgba(139, 0, 0, 0.3),
+            0 0 20px rgba(139, 0, 0, 0.5);
+    }
+    50% { 
+        box-shadow: 
+            inset 0 0 50px rgba(255, 0, 0, 0.5),
+            0 0 40px rgba(255, 0, 0, 0.8);
+    }
 }
 
 .copy-btn {
-    background: #0f0;
-    color: #000;
-    padding: 12px 30px;
+    background: linear-gradient(135deg, #8b0000 0%, #4a0000 100%);
+    color: #fff;
+    padding: 15px 40px;
     margin: 20px 0;
 }
 
 .message {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.8;
     margin: 20px 0;
-    color: #ccc;
+    color: #8b0000;
+    font-family: 'Creepster', cursive;
+    text-shadow: 0 0 5px #8b0000;
 }
 
 .error {
-    color: #ff4444;
-    font-size: 16px;
+    color: #ff0000;
+    font-size: 18px;
     margin: 10px 0;
     display: none;
+    font-family: 'Creepster', cursive;
+    text-shadow: 0 0 10px #ff0000;
+    animation: errorShake 0.5s;
+}
+
+@keyframes errorShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
 }
 
 .error.show {
     display: block;
 }
+
+/* تأثيرات إضافية مرعبة */
+.blood-drip {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(180deg, #8b0000 0%, transparent 100%);
+    opacity: 0.3;
+}
+
+.eye {
+    position: fixed;
+    font-size: 30px;
+    opacity: 0.1;
+    animation: eyeBlink 5s infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes eyeBlink {
+    0%, 100% { opacity: 0.1; }
+    50% { opacity: 0.3; }
+}
+
+/* عيون تراقب في الخلفية */
+body::after {
+    content: '👁️ 👁️ 👁️ 👁️ 👁️ 👁️ 👁️ 👁️';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 40px;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 0;
+    animation: eyesFloat 10s infinite;
+}
+
+@keyframes eyesFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    }
